@@ -3,20 +3,26 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
-    public Color farve;
-    void OnGUI()
+    Font pixelFont;
+    GUIStyle gameStyle()
     {
-        GUI.backgroundColor = farve;
+        pixelFont = Resources.Load("Font/PixeloidSans") as Font;
+        GUIStyle style = new GUIStyle();
+        style.font = pixelFont;
+        return style;
+    }
+    void OnGUI()
+    {        
         //Main menu button
-        if (GUI.Button(new Rect(Screen.width-130, Screen.height-50, 120, 40), "Main Menu"))
+        if (GUI.Button(new Rect(Screen.width-130, Screen.height-50, 120, 40), "Main Menu", gameStyle()))
         {
             SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
         }
 
         //Weights button
-        if (GUI.Button(new Rect(10, 10, 120, 40), "BUTTON"))
+        if (GUI.Button(new Rect(10, 10, 120, 40), "BUTTON", gameStyle()))
         {
-            SceneManager.LoadScene("Weights", LoadSceneMode.Single);
+            SceneManager.LoadScene("Weightlifting", LoadSceneMode.Single);
         }
     }
 }

@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
+    path: 
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/GymMenu.unity
@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 41f212cd086873244bfdb6bc83fd803d
+  - enabled: 1
+    path: Assets/Scenes/Weightlifting.unity
+    guid: 358e695e884dfa94881fadc563f92487
   m_configObjects: {}
