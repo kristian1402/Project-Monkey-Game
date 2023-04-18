@@ -25,7 +25,12 @@ public class Weight : MonoBehaviour
         repUp.SetActive(false);
     }
 
-    void Game(float Strength, float MaxVal)
+    void Update()
+    {
+        Gameplay(0.35f, 0.75f);
+    }
+
+    public void Gameplay(float Strength, float MaxVal)
     {
         repCount.text = reps.ToString();
         mainSlider.value = Mathf.SmoothStep(mainSlider.value, 0, fillTime);
@@ -57,5 +62,10 @@ public class Weight : MonoBehaviour
         {
             winText.SetActive(true);
         }
+    }
+
+    public void EndState()
+    {
+        //Add gained values to monkey
     }
 }
