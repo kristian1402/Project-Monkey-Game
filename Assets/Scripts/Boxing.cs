@@ -10,32 +10,42 @@ public class Boxing : MonoBehaviour
     bool picked = false;
     TMP_Text Letter;
     string touchbutton;
+    int index;
+    KeyCode[] keyCodes;
     void Start()
     {
         buttons = new string[] { "A", "B", "C", "D", "E", "F", "G", "H" };
+        keyCodes = new KeyCode[] {KeyCode.A, KeyCode.B, KeyCode.C, KeyCode.D, KeyCode.E, KeyCode.F, KeyCode.G, KeyCode.H};
         Letter = GameObject.FindObjectOfType<TMP_Text>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        pickbutton();
+        int test = pickbutton();
         Letter.text = touchbutton;
         if (Input.anyKeyDown)
         {
-
+            if (Input.GetKeyDown(keyCodes[test]))
+            {
+                Debug.Log("Sucess");
+            }
+            else
+            {
+                Debug.Log("Fail");
+            }
         }
 
     }
-    void pickbutton()
+    int pickbutton()
     {
-        
         if (picked == false)
         {
-            int index = Random.Range(0,buttons.Length);
+            index = Random.Range(0,buttons.Length);
             touchbutton = buttons[index];
             Debug.Log(touchbutton);
             picked = true;
         }
+        return index;
     }
 }
