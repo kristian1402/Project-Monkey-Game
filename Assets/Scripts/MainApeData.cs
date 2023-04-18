@@ -29,7 +29,7 @@ public class MainApeData : MonoBehaviour
         filename = Application.dataPath + "/Savefile/Savefile.csv";
         TextWriter tw = new StreamWriter(filename, true);       
         tw.WriteLine("creatine, protein, steroids, pushStrength, pullStrength, Stamina, Level"); //Add to this list if we want to add more predetermined things
-        tw.WriteLine(creatine + ";" + proteine + ";" + steroids + ";" + PushStrength + ";" + pullStrength + ";" + stamina + ":" + level); //Add to this list if we want to add more predetermined things
+        tw.WriteLine(creatine + ";" + proteine + ";" + steroids + ";" + PushStrength + ";" + pullStrength + ";" + stamina + ";" + level); //Add to this list if we want to add more predetermined things
         tw.Close(); 
         written = true;
     }
