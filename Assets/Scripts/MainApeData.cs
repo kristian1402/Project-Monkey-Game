@@ -9,42 +9,28 @@ public class MainApeData : MonoBehaviour
         bool proteine = false;
         bool steroids = false;
         int level = 1;
-        float PushStrength = 1;
-        float pullStrength = 1;
-        float stamina = 1;
+        float PushStrength = 0.35f;
+        float pullStrength = 0.75f;
+        float stamina = 0.9f;
         string filename = "";
+        bool written = false;
 
-    void Awake()
-    {
-        filename = Application.dataPath + "/Savefile/Savefile.csv";
-    }
+
     void Update(){
         WriteCSV();
     }
 
-    bool headerLine = true;
-    bool first = true;
-    public void WriteCSV()
+    void WriteCSV()
     {
-        TextWriter tw = new StreamWriter(filename, true);
-
-        if (headerLine == true)
+        if (written)
         {
-            
-            tw.WriteLine("creatine, protein, steroids, pushStrength, pullStrength, Stamina, Level"); //Add to this list if we want to add more predetermined things
-            tw.Close();
-            tw = new StreamWriter(filename, true);
-            headerLine = false;
+            File.Delete (Application.dataPath + "/Savefile/Savefile.csv");
         }
-        if (first)
-        {
-            tw.WriteLine(creatine + ";" + proteine + ";" + steroids + ";" + PushStrength + ";" + pullStrength + ";" + stamina + ":" + level); //Add to this list if we want to add more predetermined things
-            tw.Close(); 
-            first = false;  
-        }
-        if (first == false)
-        {
-            
-        }
+        filename = Application.dataPath + "/Savefile/Savefile.csv";
+        TextWriter tw = new StreamWriter(filename, true);       
+        tw.WriteLine("creatine, protein, steroids, pushStrength, pullStrength, Stamina, Level"); //Add to this list if we want to add more predetermined things
+        tw.WriteLine(creatine + ";" + proteine + ";" + steroids + ";" + PushStrength + ";" + pullStrength + ";" + stamina + ";" + level); //Add to this list if we want to add more predetermined things
+        tw.Close(); 
+        written = true;
     }
 }
