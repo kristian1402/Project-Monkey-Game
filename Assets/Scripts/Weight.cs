@@ -4,37 +4,54 @@ using TMPro;
 
 public class Weight : MonoBehaviour
 {
+    SaveDataReader saveData;
+    string[] values;
     public TMP_Text repCount;
     GameObject winText;
     GameObject repUp;
     GameObject repDown;
     Slider mainSlider;
     float fillTime;
+    float PushStrength;
+    float fallTime;
+    float stamina;
     int reps;
     bool pointAdded = false;
+    bool fillTimeSet = false;
 
     void Start()
     {
+        saveData = GameObject.FindObjectOfType<SaveDataReader>();
         mainSlider = GameObject.FindObjectOfType<Slider>();
         winText = GameObject.FindGameObjectWithTag("Finish");
         repUp = GameObject.Find("HaramBaeMiliUp");
         repDown = GameObject.Find("HaramBaeMiliDown");
-        fillTime += 0.9f * Time.deltaTime;
+
         winText.SetActive(false);
         repDown.SetActive(true);
         repUp.SetActive(false);
+
+        values = saveData.getData();
+        PushStrength = float.Parse(values[3]);
+        fallTime = float.Parse(values[4]);
+        stamina = float.Parse(values[5]);
     }
 
     void Update()
     {
-        Gameplay(0.35f, 0.75f);
+        Gameplay(PushStrength, fallTime, stamina);
+        fillTimeSet = true;
     }
 
-    public void Gameplay(float Strength, float MaxVal)
+    public void Gameplay(float Strength, float MaxVal, float fallTime)
     {
+        if (!fillTimeSet)
+        {
+            fillTime += fallTime * Time.deltaTime;   
+        }
         repCount.text = reps.ToString();
         mainSlider.value = Mathf.SmoothStep(mainSlider.value, 0, fillTime);
-        if (reps <= 20)
+        if (reps < 20)
         {
             if (Input.GetKeyUp("space"))
             {
@@ -58,7 +75,7 @@ public class Weight : MonoBehaviour
                 repUp.SetActive(false);
             }
         }
-        if (reps == 20)
+        if (reps > 19)
         {
             winText.SetActive(true);
         }
