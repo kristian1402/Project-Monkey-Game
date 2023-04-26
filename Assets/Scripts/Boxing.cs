@@ -1,19 +1,27 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections;
 
 public class Boxing : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Sprite[] spriteArray;
-    public SpriteRenderer spriteRenderer;
     string[] buttons;
     string pickedbutton;
     bool picked = false;
     TMP_Text Letter;
+    TMP_Text Exhausted;
+    TMP_Text Score;
     string touchbutton;
     int index;
     KeyCode[] keyCodes;
+    GameObject defence;
+    GameObject hitLeft;
+    GameObject hitRight;
+    int spriteIndex = 0;
+    int health = 3;
+    bool alive = true;
+    int score = 0;
     void Start()
     {
         buttons = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V"
@@ -21,26 +29,69 @@ public class Boxing : MonoBehaviour
         keyCodes = new KeyCode[] {KeyCode.A, KeyCode.B, KeyCode.C, KeyCode.D, KeyCode.E, KeyCode.F, KeyCode.G, KeyCode.H, KeyCode.I,
         KeyCode.J, KeyCode.K, KeyCode.L, KeyCode.M, KeyCode.N, KeyCode.O, KeyCode.P, KeyCode.Q, KeyCode.R, KeyCode.S, KeyCode.T,
         KeyCode.U, KeyCode.V, KeyCode.W, KeyCode.X, KeyCode.Y, KeyCode.Z};
-        Letter = GameObject.FindObjectOfType<TMP_Text>();
-        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        Letter = GameObject.Find("Letter").GetComponent<TMP_Text>();
+        Exhausted = GameObject.Find("Exhausted").GetComponent<TMP_Text>();
+        Score = GameObject.Find("Score").GetComponent<TMP_Text>();
+
+        hitLeft = GameObject.Find("Left");
+        hitRight = GameObject.Find("Right");
+        defence = GameObject.Find("Main");
+
+        Exhausted.text = "";
+        Score.text = score.ToString();
+        hitLeft.SetActive(false);
+        hitRight.SetActive(false);
+        defence.SetActive(true);
+        Letter.rectTransform.position = new Vector3(7, 3, 0);
+
+
+        StartCoroutine(MoveText());
+
     }
 
     // Update is called once per frame
-    
+    IEnumerator MoveText()
+    {
+        while (true)
+        {
+            // Move the text 200 pixels to the left each second
+            
+            Letter.rectTransform.position -= new Vector3((1+(score/3)) * Time.deltaTime, 0, 0);
+            
+            if (Letter.rectTransform.position.x < (-5))
+            {
+                health--;
+                Letter.rectTransform.position = new Vector3(7, 3, 0);
+                Debug.Log(health);
+            }
+
+            // Wait for the next frame
+            yield return null;
+        }
+    }
     void Update()
     {
         int test = pickbutton();
+        Score.text = score.ToString();
         Letter.text = touchbutton;
         if (Input.anyKeyDown)
         {
-            if (Input.GetKeyDown(keyCodes[test]))
+            if (Input.GetKeyDown(keyCodes[test]) && alive == true)
             {
                 picked = false;
+                Letter.rectTransform.position = new Vector3(7, 3, 0);
+                score++;
                 ChangeSprite();
+
             }
             else
             {
-                Debug.Log("Fail");
+                health--;
+                if (health < 1)
+                {
+                    Exhausted.text = "Exhausted";
+                    alive = false;
+                }
             }
         }
 
@@ -51,26 +102,50 @@ public class Boxing : MonoBehaviour
         {
             index = Random.Range(0,buttons.Length);
             touchbutton = buttons[index];
-            Debug.Log(touchbutton);
+            //Debug.Log(touchbutton);
             picked = true;
         }
         return index;
     }
- int spriteIndex = 0;
 
     void ChangeSprite()
     {
-        Debug.Log(spriteIndex);
-        if (spriteIndex < spriteArray.Length)
+        spriteIndex++;
+        //Debug.Log(spriteIndex);
+
+        if (spriteIndex == 3)
         {
-            spriteRenderer.sprite = spriteArray[spriteIndex];
-            spriteIndex++;
+            //Debug.Log("hej3");
+            hitLeft.SetActive(false);
+            hitRight.SetActive(true);
+            defence.SetActive(false);
+            spriteIndex = -1;
         }
-        else
+
+        if (spriteIndex == 2)
         {
-            // Reset sprite index to 0 if it exceeds the number of sprites in the array
-            spriteIndex = 0;
-            spriteRenderer.sprite = spriteArray[spriteIndex];
+            //Debug.Log("hej");
+            hitLeft.SetActive(false);
+            hitRight.SetActive(false);
+            defence.SetActive(true);
         }
+
+        if (spriteIndex == 1)
+        {
+            //Debug.Log("hej2");
+            hitLeft.SetActive(true);
+            hitRight.SetActive(false);
+            defence.SetActive(false);
+        }
+
+        if (spriteIndex == 0)
+        {
+            //Debug.Log("hej");
+            hitLeft.SetActive(false);
+            hitRight.SetActive(false);
+            defence.SetActive(true);
+        }
+
+
     }
 }
