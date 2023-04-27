@@ -108,14 +108,14 @@ public class Boxing : MonoBehaviour
             else
             {
                 health--;
-                if (health < 1)
-                {
-                    Exhausted.text = "Exhausted";
-                    alive = false;
-                }
             }
         }
-
+        
+        if (health < 1)
+        {
+            Exhausted.text = "Exhausted";
+            alive = false;
+        }
     }
     int pickbutton()
     {
