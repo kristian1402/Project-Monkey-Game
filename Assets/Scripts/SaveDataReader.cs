@@ -8,7 +8,7 @@ public class SaveDataReader : MonoBehaviour
     string filePath;
     StreamReader reader;
     string RawData;
-    string[] PrData;
+    public string[] PrData;
     void Start()
     {
         string CSVfilePath = AssetDatabase.GetAssetPath(CSVFile);
@@ -24,7 +24,6 @@ public class SaveDataReader : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     public string[] getData()
     {
         return PrData;

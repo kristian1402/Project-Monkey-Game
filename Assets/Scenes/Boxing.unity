@@ -623,6 +623,7 @@ GameObject:
   - component: {fileID: 748757340}
   - component: {fileID: 748757339}
   - component: {fileID: 748757342}
+  - component: {fileID: 748757343}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -711,6 +712,19 @@ MonoBehaviour:
   audiosource: {fileID: 1114780043}
   boxing: {fileID: 8300000, guid: 80a673ae3f27caa4e9bc110ad98cfcfd, type: 3}
   boxing2: {fileID: 8300000, guid: 6629850d58a894945be4d9f151781552, type: 3}
+--- !u!114 &748757343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 748757338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 896998731842d5344a68377da493131a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CSVFile: {fileID: 4900000, guid: d11e3a80a90cc7346a15acb9ba2576df, type: 3}
 --- !u!1 &798354873
 GameObject:
   m_ObjectHideFlags: 0
