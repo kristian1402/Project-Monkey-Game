@@ -480,6 +480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fader: {fileID: 1806706000}
+  transitionTime: 0.75
 --- !u!114 &660765402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -533,7 +534,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Weightlifting
+          m_StringArgument: Boxing
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &660765403
@@ -898,6 +899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fader: {fileID: 1806706000}
+  transitionTime: 0.75
 --- !u!114 &1261800782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1724,6 +1726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fader: {fileID: 1806706000}
+  transitionTime: 0.75
 --- !u!4 &1791529611
 Transform:
   m_ObjectHideFlags: 0
@@ -1963,6 +1966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fader: {fileID: 1806706000}
+  transitionTime: 0.75
 --- !u!1 &1993263775
 GameObject:
   m_ObjectHideFlags: 0
@@ -2139,6 +2143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fader: {fileID: 1806706000}
+  transitionTime: 0.75
 --- !u!114 &2028678226
 MonoBehaviour:
   m_ObjectHideFlags: 0
