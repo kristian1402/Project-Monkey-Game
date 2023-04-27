@@ -53,7 +53,7 @@ public class Boxing : MonoBehaviour
         Letter.rectTransform.position = new Vector3(7, 3, 0);
 
         values = saveData.getData();
-        level = float.Parse(values[6]);
+        level = float.Parse(values[5]);
         Debug.Log(level);
         StartCoroutine(MoveText());
 
