@@ -780,8 +780,8 @@ GameObject:
   - component: {fileID: 1320542175}
   - component: {fileID: 1320542177}
   - component: {fileID: 1320542176}
-  - component: {fileID: 1320542178}
   - component: {fileID: 1320542180}
+  - component: {fileID: 1320542178}
   m_Layer: 5
   m_Name: RepCounter
   m_TagString: Untagged
@@ -932,6 +932,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CSVFile: {fileID: 4900000, guid: d11e3a80a90cc7346a15acb9ba2576df, type: 3}
+  PrData: []
 --- !u!1 &1349863860
 GameObject:
   m_ObjectHideFlags: 0

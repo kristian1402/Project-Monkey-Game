@@ -7,6 +7,8 @@ using System.Collections;
 public class Boxing : MonoBehaviour
 {
     // Start is called before the first frame update
+    SaveDataReader saveData;
+    string[] values;
     string[] buttons;
     string pickedbutton;
     bool picked = false;
@@ -26,8 +28,10 @@ public class Boxing : MonoBehaviour
     int health = 3;
     bool alive = true;
     int score = 0;
+    float level;
     void Start()
     {
+        saveData = GameObject.FindObjectOfType<SaveDataReader>();
         buttons = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V"
         , "W", "X", "Y", "Z"};
         keyCodes = new KeyCode[] {KeyCode.A, KeyCode.B, KeyCode.C, KeyCode.D, KeyCode.E, KeyCode.F, KeyCode.G, KeyCode.H, KeyCode.I,
@@ -48,7 +52,9 @@ public class Boxing : MonoBehaviour
         defence.SetActive(true);
         Letter.rectTransform.position = new Vector3(7, 3, 0);
 
-
+        values = saveData.getData();
+        level = float.Parse(values[6]);
+        Debug.Log(level);
         StartCoroutine(MoveText());
 
     }
@@ -60,7 +66,7 @@ public class Boxing : MonoBehaviour
         {
             // Move the text 200 pixels to the left each second
             
-            Letter.rectTransform.position -= new Vector3((1+(score/3)) * Time.deltaTime, 0, 0);
+            Letter.rectTransform.position -= new Vector3((1+(score/(3+level))) * Time.deltaTime, 0, 0);
             
             if (Letter.rectTransform.position.x < (-5))
             {

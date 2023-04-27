@@ -31,7 +31,8 @@ public class Weight : MonoBehaviour
         repDown.SetActive(true);
         repUp.SetActive(false);
 
-        values = saveData.getData();
+        values = saveData.PrData;
+
         PushStrength = float.Parse(values[3]);
         fallTime = float.Parse(values[4]);
         stamina = float.Parse(values[5]);
@@ -39,7 +40,7 @@ public class Weight : MonoBehaviour
 
     void Update()
     {
-        Gameplay(PushStrength, fallTime, stamina);
+        Gameplay(PushStrength, 0.35f, stamina);
         fillTimeSet = true;
     }
 
@@ -58,7 +59,7 @@ public class Weight : MonoBehaviour
                 mainSlider.value += Strength;
             }  
 
-            if (mainSlider.value >= MaxVal)
+            if (mainSlider.value >= 0.75f)
             {
                 repDown.SetActive(false);
                 repUp.SetActive(true);
