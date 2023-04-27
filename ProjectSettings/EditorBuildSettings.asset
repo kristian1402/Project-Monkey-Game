@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StoreMenu.unity
     guid: 9445583052ddc784185d58818e1a72c7
+  - enabled: 1
+    path: Assets/Scenes/Boxing.unity
+    guid: fa3a9d7e7870bf24dba606dec384dd40
   m_configObjects: {}
