@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine.UI;
 using System.Collections;
 
+
 public class Boxing : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -14,6 +15,9 @@ public class Boxing : MonoBehaviour
     TMP_Text Score;
     string touchbutton;
     int index;
+    public AudioSource audiosource;
+    public AudioClip boxing;
+    public AudioClip boxing2;
     KeyCode[] keyCodes;
     GameObject defence;
     GameObject hitLeft;
@@ -78,9 +82,20 @@ public class Boxing : MonoBehaviour
         {
             if (Input.GetKeyDown(keyCodes[test]) && alive == true)
             {
+                int s = Random.Range(1,3);
+                Debug.Log(s);
                 picked = false;
                 Letter.rectTransform.position = new Vector3(7, 3, 0);
                 score++;
+                if (s == 1)
+                {
+                    audiosource.PlayOneShot(boxing, 50);
+                }
+                else
+                {
+                    audiosource.PlayOneShot(boxing2, 50);
+                }
+                
                 ChangeSprite();
 
             }
