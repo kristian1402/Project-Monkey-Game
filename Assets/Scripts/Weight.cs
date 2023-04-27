@@ -82,7 +82,7 @@ public class Weight : MonoBehaviour
         }
     }
 
-    public void EndState()
+    void EndState()
     {
         //Add gained values to monkey
     }
