@@ -29,6 +29,7 @@ public class Boxing : MonoBehaviour
     bool alive = true;
     int score = 0;
     float level;
+    bool gameStarted = false;
     void Start()
     {
         saveData = GameObject.FindObjectOfType<SaveDataReader>();
@@ -81,9 +82,16 @@ IEnumerator MoveText()
     }
 void Update()
     {
-        if(alive == true)
+        if(Input.anyKey && gameStarted == false)
         {
-            MainLoop();
+            gameStarted = true;
+        }
+        if (gameStarted == true)
+        {
+            if(alive == true)
+            {
+                MainLoop();
+            }
         }
     
     }
