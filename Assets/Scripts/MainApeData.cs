@@ -5,18 +5,18 @@ using System.IO;
 
 public class MainApeData : MonoBehaviour
 {
-        public bool creatine = false;
-        public bool proteine = false;
-        public bool steroids = false;
-        int level = 1;
-        float PushStrength = 0.35f;
-        float pullStrength = 0.75f;
-        float stamina = 0.9f;
-        string filename = "";
-        bool written = false;
+    public bool creatine = false;
+    public bool proteine = false;
+    public bool steroids = false;
+    int level = 1;
+    float PushStrength = 0.35f;
+    float pullStrength = 0.75f;
+    float stamina = 0.9f;
+    string filename = "";
+    bool written = false;
 
-    
-    void Update(){
+    void Update()
+    {
         WriteCSV();
     }
 
@@ -24,13 +24,28 @@ public class MainApeData : MonoBehaviour
     {
         if (written)
         {
-            File.Delete (Application.dataPath + "/Savefile/Savefile.csv");
+            File.Delete(Application.dataPath + "/Savefile/Savefile.csv");
         }
         filename = Application.dataPath + "/Savefile/Savefile.csv";
-        TextWriter tw = new StreamWriter(filename, true);       
-        tw.WriteLine("creatine, protein, steroids, pushStrength, pullStrength, Stamina, Level"); //Add to this list if we want to add more predetermined things
-        tw.WriteLine(creatine + ";" + proteine + ";" + steroids + ";" + PushStrength + ";" + pullStrength + ";" + stamina + ";" + level); //Add to this list if we want to add more predetermined things
-        tw.Close(); 
+        TextWriter tw = new StreamWriter(filename, true);
+        tw.WriteLine("creatine, protein, steroids, pushStrength, pullStrength, Stamina, Level");
+        tw.WriteLine(creatine + ";" + proteine + ";" + steroids + ";" + PushStrength + ";" + pullStrength + ";" + stamina + ";" + level);
+        tw.Close();
         written = true;
+    }
+
+    public void SetCreatineTrue()
+    {
+        creatine = true;
+    }
+
+    public void SetProteineTrue()
+    {
+        proteine = true;
+    }
+
+    public void SetSteroidsTrue()
+    {
+        steroids = true;
     }
 }
