@@ -50,7 +50,7 @@ public class Boxing : MonoBehaviour
         hitLeft.SetActive(false);
         hitRight.SetActive(false);
         defence.SetActive(true);
-        Letter.rectTransform.position = new Vector3(7, 3, 0);
+        Letter.rectTransform.position = new Vector3(8.5f, 3, 0);
 
         values = saveData.getData();
         level = float.Parse(values[5]);
@@ -71,7 +71,7 @@ public class Boxing : MonoBehaviour
             if (Letter.rectTransform.position.x < (-5))
             {
                 health--;
-                Letter.rectTransform.position = new Vector3(7, 3, 0);
+                Letter.rectTransform.position = new Vector3(8.5f, 3, 0);
                 Debug.Log(health);
             }
 
@@ -91,7 +91,7 @@ public class Boxing : MonoBehaviour
                 int s = Random.Range(1,3);
                 Debug.Log(s);
                 picked = false;
-                Letter.rectTransform.position = new Vector3(7, 3, 0);
+                Letter.rectTransform.position = new Vector3(8.5f, 3, 0);
                 score++;
                 if (s == 1)
                 {
