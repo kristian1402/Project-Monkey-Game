@@ -47,7 +47,7 @@ void Start()
     //rigidbody2D.gravityScale = 0;
 
     // Set the position of the game object
-    spriteObject.transform.position = new Vector3(10, -3, 0);
+    spriteObject.transform.position = new Vector3(10, -3, -1);
 
     StartCoroutine(MoveText(spriteObject));
 }
@@ -61,7 +61,7 @@ IEnumerator MoveText(GameObject spriteObject)
 
         // Move the sprite to the left
         Vector3 currentPosition = spriteObject.transform.position;
-        Vector3 newPosition = new Vector3(currentPosition.x - score * Time.deltaTime, currentPosition.y, currentPosition.z);
+        Vector3 newPosition = new Vector3(currentPosition.x - score * Time.deltaTime, currentPosition.y, -1);
         
         // Check if the tag of the current game object is not the excluded tag
         if (!spriteObject.CompareTag(excludedTag))
