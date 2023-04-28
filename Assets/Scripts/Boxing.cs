@@ -30,6 +30,7 @@ public class Boxing : MonoBehaviour
     int score = 0;
     float level;
     bool gameStarted = false;
+    bool first = true;
     void Start()
     {
         saveData = GameObject.FindObjectOfType<SaveDataReader>();
@@ -46,7 +47,7 @@ public class Boxing : MonoBehaviour
         hitRight = GameObject.Find("Right");
         defence = GameObject.Find("Main");
 
-        Exhausted.text = "";
+        //Exhausted.text = "";
         Score.text = score.ToString();
         hitLeft.SetActive(false);
         hitRight.SetActive(false);
@@ -56,14 +57,14 @@ public class Boxing : MonoBehaviour
         values = saveData.getData();
         level = float.Parse(values[5]);
         Debug.Log(level);
-        StartCoroutine(MoveText());
+        
 
     }
 
     // Update is called once per frame
 IEnumerator MoveText()
 {
-    while (alive == true)
+    while (alive == true && gameStarted == true)
     {
             // Move the text 200 pixels to the left each second
             
@@ -82,16 +83,26 @@ IEnumerator MoveText()
     }
 void Update()
     {
+        if(gameStarted == false)
+        {
+            Letter.text = "";
+            Exhausted.text = "Press any key to start";
+        }
         if(Input.anyKey && gameStarted == false)
         {
             gameStarted = true;
+            Exhausted.text = "";
         }
-        if (gameStarted == true)
+        if (gameStarted == true && alive == true)
         {
-            if(alive == true)
-            {
-                MainLoop();
+            if(first == true){
+                StartCoroutine(MoveText());
+                first = false;
             }
+            
+
+            MainLoop();
+            
         }
     
     }
