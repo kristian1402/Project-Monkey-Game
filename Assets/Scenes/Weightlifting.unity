@@ -1350,8 +1350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 896998731842d5344a68377da493131a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CSVFile: {fileID: 4900000, guid: d11e3a80a90cc7346a15acb9ba2576df, type: 3}
-  PrData: []
+  SaveFile: {fileID: 4900000, guid: d11e3a80a90cc7346a15acb9ba2576df, type: 3}
 --- !u!1 &1349863860
 GameObject:
   m_ObjectHideFlags: 0
