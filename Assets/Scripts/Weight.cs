@@ -40,7 +40,7 @@ public class Weight : MonoBehaviour
 
     void Update()
     {
-        Gameplay(PushStrength, 0.35f, stamina);
+        Gameplay(PushStrength, 0.75f, stamina);
         fillTimeSet = true;
     }
 

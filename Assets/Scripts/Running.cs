@@ -23,8 +23,9 @@ public class Running : MonoBehaviour
     int score = 5;
     GameObject spriteObject;
     GameObject harambae;
-
     float zRotation;
+    bool gameStarted = false;
+    bool coroutineStarted = false;
     bool lost = false;
     float level;
 
@@ -60,9 +61,6 @@ void Start()
     values = saveData.getData();
     level = float.Parse(values[5]);
     Debug.Log(level);
-
-    StartCoroutine(MoveText(spriteObject));
-    StartCoroutine(ChangeImage());
 }
 
 IEnumerator MoveText(GameObject spriteObject)
@@ -87,18 +85,28 @@ IEnumerator MoveText(GameObject spriteObject)
     }
 }
 void Update()
-    
     {
-
-    if (lost == false)
-    {
-        mainrunner();
-    }
-    if (lost == true)
-    {
-        lostText.text = "Exhausted";
-    }
-
+        if(Input.anyKey && gameStarted == false)
+        {
+            gameStarted = true;
+        }
+            if (gameStarted == true)
+            {   
+                if (coroutineStarted == false)
+                {
+                    StartCoroutine(MoveText(spriteObject));
+                    StartCoroutine(ChangeImage());
+                    coroutineStarted = true;
+                }
+                if (lost == false)
+                {
+                    mainrunner();
+                }
+                if (lost == true)
+                {
+                    lostText.text = "Exhausted";
+                }
+            }
     }
 void mainrunner(){
         zRotation = harambae.transform.rotation.eulerAngles.z;
