@@ -31,8 +31,8 @@ public class SceneLoader : MonoBehaviour
         // If it is any other scene, show the fader and apply the transition effect before loading the new scene
         else {
             fader.gameObject.SetActive(true);
-            LeanTween.alpha (fader, 0, transitionTime * 2); // Fade-out effect
-            LeanTween.alpha (fader, 1, transitionTime); // Fade-in effect
+            //LeanTween.alpha (fader, 0, transitionTime * 2); // Fade-out effect
+            //LeanTween.alpha (fader, 1, transitionTime); // Fade-in effect
             LeanTween.scale (fader, new Vector3(1,1,1), transitionTime); // Scale-in effect
             LeanTween.scale (fader, new Vector3(0,0,0), transitionTime).setEase (LeanTweenType.easeInOutExpo).setOnComplete(() => { // Scale-out effect
                 fader.gameObject.SetActive(false); // Deactivate the fader after the transition effect is complete
