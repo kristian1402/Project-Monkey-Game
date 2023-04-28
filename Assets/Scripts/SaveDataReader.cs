@@ -32,25 +32,25 @@ public class SaveDataReader : MonoBehaviour
         return PrData;
     }
 
-    public void updateSaveData(bool creatine, bool protein, bool steroids, float Strength, float stamina, float Level)
+    public void updateSaveData(bool creatine, bool protein, bool steroids, float Strength, float stamina, float Level, int money)
     {
         writer = new StreamWriter(filePath);
-        writer.WriteLine("creatine, protein, steroids, Strength, Stamina, Level");
+        writer.WriteLine("creatine, protein, steroids, Strength, Stamina, Level, money");
         if (creatine == true)
         {
-            writer.WriteLine("true;false;false;" + Strength + ";" + stamina + ";" + Level);
+            writer.WriteLine("true;false;false;" + Strength + ";" + stamina + ";" + Level + ";" + money);
         }
         else if (protein == true)
         {
-            writer.WriteLine("false;true;false;" + Strength + ";" + stamina + ";" + Level);
+            writer.WriteLine("false;true;false;" + Strength + ";" + stamina + ";" + Level+ ";" + money);
         }
         else if (steroids == true)
         {
-            writer.WriteLine("false;false;true;" + Strength + ";" + stamina + ";" + Level);
+            writer.WriteLine("false;false;true;" + Strength + ";" + stamina + ";" + Level+ ";" + money);
         }
         else
         {
-            writer.WriteLine("false;false;false;" + Strength + ";" + stamina + ";" + Level);
+            writer.WriteLine("false;false;false;" + Strength + ";" + stamina + ";" + Level+ ";" + money);
         }
         writer.Close();
     }

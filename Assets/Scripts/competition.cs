@@ -85,6 +85,6 @@ public class competition : MonoBehaviour
             scoreText.text = "YOU LOSE";
         }
         finished = true;
-        saveData.updateSaveData(false,false,false,1,2,3);
+        saveData.updateSaveData(false,false,false,1,2,3,4);
     }
 }
