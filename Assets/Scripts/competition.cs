@@ -15,6 +15,7 @@ public class competition : MonoBehaviour
     GameObject mandrilPose;
     GameObject menuButton;
     GameObject retryButton;
+    GameObject grayOut;
     float timeRemaining = 5;
     int reps;
     int keypressCount;
@@ -33,7 +34,9 @@ public class competition : MonoBehaviour
         haramBaePose = GameObject.Find("HaramBaeSwole");
         mandrilIdle = GameObject.Find("MandrilStandard");
         mandrilPose = GameObject.Find("MandrilSwole");
-
+        grayOut = GameObject.Find("GrayOut");
+        
+        grayOut.SetActive(false);
         menuButton.SetActive(false);
         retryButton.SetActive(false);
 
@@ -98,6 +101,7 @@ public class competition : MonoBehaviour
         }
         finished = true;
         saveData.updateSaveData(false,false,false,1,2,3);
+        grayOut.SetActive(true);
         menuButton.SetActive(true);
         retryButton.SetActive(true);
     }
