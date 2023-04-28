@@ -13,6 +13,8 @@ public class competition : MonoBehaviour
     GameObject haramBaePose;
     GameObject mandrilIdle;
     GameObject mandrilPose;
+    GameObject menuButton;
+    GameObject retryButton;
     float timeRemaining = 5;
     int reps;
     int keypressCount;
@@ -23,12 +25,17 @@ public class competition : MonoBehaviour
     bool gameStarted = false;
     void Start()
     {
+        menuButton = GameObject.Find("MenuButton");
+        retryButton = GameObject.Find("RetryButton");
         saveData = GameObject.FindObjectOfType<SaveDataReader>();
         moneyData = GameObject.FindObjectOfType<MoneyData>();
         haramBaeIdle = GameObject.Find("HaramBae");
         haramBaePose = GameObject.Find("HaramBaeSwole");
         mandrilIdle = GameObject.Find("MandrilStandard");
         mandrilPose = GameObject.Find("MandrilSwole");
+
+        menuButton.SetActive(false);
+        retryButton.SetActive(false);
 
         haramBaePose.SetActive(false);
         mandrilPose.SetActive(false);
@@ -91,5 +98,7 @@ public class competition : MonoBehaviour
         }
         finished = true;
         saveData.updateSaveData(false,false,false,1,2,3);
+        menuButton.SetActive(true);
+        retryButton.SetActive(true);
     }
 }
