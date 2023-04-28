@@ -60,26 +60,34 @@ public class Boxing : MonoBehaviour
     }
 
     // Update is called once per frame
-    IEnumerator MoveText()
+IEnumerator MoveText()
+{
+    while (alive == true)
     {
-        while (true)
-        {
             // Move the text 200 pixels to the left each second
             
-            Letter.rectTransform.position -= new Vector3((1+(score/(3+level))) * Time.deltaTime, 0, 0);
+        Letter.rectTransform.position -= new Vector3((1+(score/(3+level))) * Time.deltaTime, 0, 0);
             
-            if (Letter.rectTransform.position.x < (-5))
-            {
-                health--;
-                Letter.rectTransform.position = new Vector3(8.5f, 3, 0);
-                Debug.Log(health);
-            }
-
-            // Wait for the next frame
-            yield return null;
+        if (Letter.rectTransform.position.x < (-5))
+        {
+            health--;
+            Letter.rectTransform.position = new Vector3(8.5f, 3, 0);
+            Debug.Log(health);
         }
+
+        // Wait for the next frame
+        yield return null;
     }
-    void Update()
+    }
+void Update()
+    {
+        if(alive == true)
+        {
+            MainLoop();
+        }
+    
+    }
+void MainLoop()
     {
         int test = pickbutton();
         Score.text = score.ToString();
@@ -95,11 +103,11 @@ public class Boxing : MonoBehaviour
                 score++;
                 if (s == 1)
                 {
-                    audiosource.PlayOneShot(boxing, 50);
+                    audiosource.PlayOneShot(boxing, 0.5f);
                 }
                 else
                 {
-                    audiosource.PlayOneShot(boxing2, 50);
+                    audiosource.PlayOneShot(boxing2, 0.5f);
                 }
                 
                 ChangeSprite();
@@ -116,7 +124,7 @@ public class Boxing : MonoBehaviour
             Exhausted.text = "Exhausted";
             alive = false;
         }
-    }
+    
     int pickbutton()
     {
         if (picked == false)
@@ -128,9 +136,9 @@ public class Boxing : MonoBehaviour
         }
         return index;
     }
-
-    void ChangeSprite()
-    {
+    }
+void ChangeSprite()
+{
         spriteIndex++;
         //Debug.Log(spriteIndex);
 
@@ -166,7 +174,5 @@ public class Boxing : MonoBehaviour
             hitRight.SetActive(false);
             defence.SetActive(true);
         }
-
-
-    }
+}
 }
