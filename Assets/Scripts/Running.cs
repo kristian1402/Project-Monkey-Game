@@ -58,17 +58,16 @@ IEnumerator MoveText(GameObject spriteObject)
     {
         
         string excludedTag = exclusion.tag;
-
+        
         // Move the sprite to the left
         Vector3 currentPosition = spriteObject.transform.position;
         Vector3 newPosition = new Vector3(currentPosition.x - score * Time.deltaTime, currentPosition.y, -1);
         
         // Check if the tag of the current game object is not the excluded tag
-        if (!spriteObject.CompareTag(excludedTag))
-        {
+
             // Update the position of the sprite
-            spriteObject.transform.position = newPosition;
-        }
+        spriteObject.transform.position = newPosition;
+        
 
         // Wait for the next frame
         yield return null;
@@ -128,9 +127,10 @@ void mainrunner(){
         Vector3 xpositive = new Vector3(8, currentPosition.y , currentPosition.z);
         exclusion.transform.position = xpositive;
     }
-    if (currentPosition.y < -1)
+
+    if (currentPosition.y < -0.9f)
     {
-        Vector3 touchfloor = new Vector3(currentPosition.x, -1 , currentPosition.z);
+        Vector3 touchfloor = new Vector3(currentPosition.x, -0.9f , currentPosition.z);
         exclusion.transform.position = touchfloor;
         onfloor = true;
     }
