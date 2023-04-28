@@ -5,9 +5,9 @@ using System.IO;
 
 public class MainApeData : MonoBehaviour
 {
-        bool creatine = false;
-        bool proteine = false;
-        bool steroids = false;
+        public bool creatine = false;
+        public bool proteine = false;
+        public bool steroids = false;
         int level = 1;
         float PushStrength = 0.35f;
         float pullStrength = 0.75f;
@@ -15,7 +15,7 @@ public class MainApeData : MonoBehaviour
         string filename = "";
         bool written = false;
 
-
+    
     void Update(){
         WriteCSV();
     }
