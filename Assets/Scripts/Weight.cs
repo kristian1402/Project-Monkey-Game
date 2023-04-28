@@ -31,7 +31,7 @@ public class Weight : MonoBehaviour
         repDown.SetActive(true);
         repUp.SetActive(false);
 
-        values = saveData.PrData;
+        values = saveData.getData();
 
         PushStrength = float.Parse(values[3]);
         fallTime = float.Parse(values[4]);

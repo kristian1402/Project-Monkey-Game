@@ -4,6 +4,7 @@ using TMPro;
 public class competition : MonoBehaviour
 {
     SaveDataReader saveData;
+    MoneyData moneyData;
     string[] values;
     public TMP_Text countdown;
     public TMP_Text scoreText;
@@ -22,6 +23,7 @@ public class competition : MonoBehaviour
     void Start()
     {
         saveData = GameObject.FindObjectOfType<SaveDataReader>();
+        moneyData = GameObject.FindObjectOfType<MoneyData>();
         haramBaeIdle = GameObject.Find("HaramBae");
         haramBaePose = GameObject.Find("HaramBaeSwole");
         mandrilIdle = GameObject.Find("MandrilStandard");
@@ -79,12 +81,14 @@ public class competition : MonoBehaviour
         if (score > 9700)
         {
             scoreText.text = "YOU WIN";
+            moneyData.updateMoney(5);
         }
         else
         {
             scoreText.text = "YOU LOSE";
+            moneyData.updateMoney(3);
         }
         finished = true;
-        saveData.updateSaveData(false,false,false,1,2,3,4);
+        saveData.updateSaveData(false,false,false,1,2,3);
     }
 }

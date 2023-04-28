@@ -4,15 +4,15 @@ using System.IO;
 
 public class SaveDataReader : MonoBehaviour
 {
-    public Object CSVFile;
+    public Object SaveFile;
     string filePath;
     StreamReader reader;
     StreamWriter writer;
     string RawData;
-    public string[] PrData;
+    string[] PrData;
     void Start()
     {
-        string CSVfilePath = AssetDatabase.GetAssetPath(CSVFile);
+        string CSVfilePath = AssetDatabase.GetAssetPath(SaveFile);
         CSVfilePath.Replace("\\", "/");
         filePath = CSVfilePath; 
         reader = new StreamReader(CSVfilePath); 
@@ -32,25 +32,25 @@ public class SaveDataReader : MonoBehaviour
         return PrData;
     }
 
-    public void updateSaveData(bool creatine, bool protein, bool steroids, float Strength, float stamina, float Level, int money)
+    public void updateSaveData(bool creatine, bool protein, bool steroids, float Strength, float stamina, float Level)
     {
         writer = new StreamWriter(filePath);
-        writer.WriteLine("creatine, protein, steroids, Strength, Stamina, Level, money");
+        writer.WriteLine("creatine, protein, steroids, Strength, Stamina, Level");
         if (creatine == true)
         {
-            writer.WriteLine("true;false;false;" + Strength + ";" + stamina + ";" + Level + ";" + money);
+            writer.WriteLine("true;false;false;" + Strength + ";" + stamina + ";" + Level);
         }
         else if (protein == true)
         {
-            writer.WriteLine("false;true;false;" + Strength + ";" + stamina + ";" + Level+ ";" + money);
+            writer.WriteLine("false;true;false;" + Strength + ";" + stamina + ";" + Level);
         }
         else if (steroids == true)
         {
-            writer.WriteLine("false;false;true;" + Strength + ";" + stamina + ";" + Level+ ";" + money);
+            writer.WriteLine("false;false;true;" + Strength + ";" + stamina + ";" + Level);
         }
         else
         {
-            writer.WriteLine("false;false;false;" + Strength + ";" + stamina + ";" + Level+ ";" + money);
+            writer.WriteLine("false;false;false;" + Strength + ";" + stamina + ";" + Level);
         }
         writer.Close();
     }
