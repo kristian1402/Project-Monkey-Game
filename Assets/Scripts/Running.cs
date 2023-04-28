@@ -2,31 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+
 public class Running : MonoBehaviour
 {
-public Sprite mySprite;
-public GameObject exclusion;
-public float moveSpeed = 5f;
-public float jumpHeight = 100f;
-bool onfloor = true;
-float increasedGravityScale = 4f;
-float normalGravityScale = 1f;
-TMP_Text running;
-TMP_Text lostText;
-int score = 5;
-GameObject spriteObject;
-GameObject harambae;
-Quaternion harambaerotation;
-float zRotation;
-bool lost = false;
+    SaveDataReader saveData;
+    public Sprite Run1;
+    public Sprite Run2;
+    public Sprite Run3;
+    string[] values;
+    public Sprite mySprite;
+    public GameObject exclusion;
+    public float moveSpeed = 5f;
+    public float jumpHeight = 100f;
+    bool onfloor = true;
+    float increasedGravityScale = 4f;
+    float normalGravityScale = 1f;
+    TMP_Text running;
+    TMP_Text lostText;
+    int score = 5;
+    GameObject spriteObject;
+    GameObject harambae;
+
+    float zRotation;
+    bool lost = false;
+    float level;
 
 void Start()
 {
+    saveData = GameObject.FindObjectOfType<SaveDataReader>();
     running = GameObject.Find("running").GetComponent<TMP_Text>();
     lostText = GameObject.Find("lost").GetComponent<TMP_Text>();
 
     harambae = GameObject.Find("HaramBae");
-    
+
 
     // Create a new game object
     spriteObject = new GameObject("Sprite Object");
@@ -48,8 +57,12 @@ void Start()
 
     // Set the position of the game object
     spriteObject.transform.position = new Vector3(10, -3, -1);
+    values = saveData.getData();
+    level = float.Parse(values[5]);
+    Debug.Log(level);
 
     StartCoroutine(MoveText(spriteObject));
+    StartCoroutine(ChangeImage());
 }
 
 IEnumerator MoveText(GameObject spriteObject)
@@ -76,6 +89,7 @@ IEnumerator MoveText(GameObject spriteObject)
 void Update()
     
     {
+
     if (lost == false)
     {
         mainrunner();
@@ -154,5 +168,33 @@ void mainrunner(){
         onfloor = false;
     }
 
+}
+IEnumerator ChangeImage()
+{
+    // Get the Image component of the exclusion game object
+    Image exclusionImage = exclusion.GetComponent<Image>();
+
+    while (lost == false)
+    {
+        // Set the source image of the exclusion Image component to Run1
+        exclusionImage.sprite = Run3;
+
+        // Wait for half a second
+        yield return new WaitForSeconds(0.5f);
+
+        // Set the source image of the exclusion Image component to Run2
+        exclusionImage.sprite = Run1;
+
+        // Wait for half a second
+        yield return new WaitForSeconds(0.5f);
+
+        exclusionImage.sprite = Run3;
+        // Wait for half a second
+        yield return new WaitForSeconds(0.5f);
+
+        exclusionImage.sprite = Run2;
+        // Wait for half a second
+        yield return new WaitForSeconds(0.5f);
+    }
 }
 }
