@@ -48,7 +48,7 @@ void Start()
 
     // Add a BoxCollider2D component to the game object
     BoxCollider2D boxCollider2D = spriteObject.AddComponent<BoxCollider2D>();
-
+    boxCollider2D.size = new Vector2(1.6f, boxCollider2D.size.y);
     // Add a Rigidbody2D component to the game object
     //Rigidbody2D rigidbody2D = spriteObject.AddComponent<Rigidbody2D>();
 
