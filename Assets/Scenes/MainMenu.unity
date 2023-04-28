@@ -1080,7 +1080,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb5e3679f9bebe44ea132f2880dcf75f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fader: {fileID: 642172787}
+  fader: {fileID: 466137409}
   transitionTime: 0.75
 --- !u!114 &1566799642
 MonoBehaviour:
