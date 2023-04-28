@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Running.unity
     guid: 33d01d9e4ae6bbf43b2bf010dcbcba5f
+  - enabled: 1
+    path: Assets/Scenes/competition.unity
+    guid: 9ad52c5a72161f64c952bc38ab076eae
   m_configObjects: {}
