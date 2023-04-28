@@ -8,7 +8,7 @@ using UnityEngine;
 public class SceneLoader : MonoBehaviour
 {
     // Serialized field for the fader gameobject
-    [SerializeField] RectTransform fader;
+    [SerializeField] RectTransform fader = null;
 
     // Serialized field for the duration of the transition effect
     [SerializeField] float transitionTime = 0.75f;
