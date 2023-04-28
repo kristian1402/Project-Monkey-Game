@@ -128,9 +128,9 @@ void mainrunner(){
         exclusion.transform.position = xpositive;
     }
 
-    if (currentPosition.y < -0.9f)
+    if (currentPosition.y < -1.17f)
     {
-        Vector3 touchfloor = new Vector3(currentPosition.x, -0.9f , currentPosition.z);
+        Vector3 touchfloor = new Vector3(currentPosition.x, -1.17f , currentPosition.z);
         exclusion.transform.position = touchfloor;
         onfloor = true;
     }
