@@ -58,7 +58,7 @@ void Start()
     // Set the position of the game object
     spriteObject.transform.position = new Vector3(10, -3, -1);
     values = saveData.getData();
-    level = float.Parse(values[5]);
+    level = float.Parse(values[6]);
     Debug.Log(level);
 
     StartCoroutine(MoveText(spriteObject));
