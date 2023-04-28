@@ -1083,7 +1083,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: GET READY
+  m_text: PRESS ANY KEY TO START
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8af2097fea6b08f4fb7a83259b55e666, type: 2}
   m_sharedMaterial: {fileID: 1224017336830788974, guid: 8af2097fea6b08f4fb7a83259b55e666, type: 2}
@@ -1110,7 +1110,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35.25
+  m_fontSize: 20.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1340,6 +1340,7 @@ GameObject:
   - component: {fileID: 1993055533}
   - component: {fileID: 1993055532}
   - component: {fileID: 1993055536}
+  - component: {fileID: 1993055537}
   - component: {fileID: 1993055535}
   m_Layer: 0
   m_Name: Main Camera
@@ -1440,8 +1441,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 896998731842d5344a68377da493131a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CSVFile: {fileID: 4900000, guid: d11e3a80a90cc7346a15acb9ba2576df, type: 3}
-  PrData: []
+  SaveFile: {fileID: 4900000, guid: d11e3a80a90cc7346a15acb9ba2576df, type: 3}
+--- !u!114 &1993055537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993055531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56541fb568ad64e45bd2cf7264a28a60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoneyFile: {fileID: 4900000, guid: 8834fbdfc52fc874caf546eb0b2400ef, type: 3}
 --- !u!1 &2123589921
 GameObject:
   m_ObjectHideFlags: 0

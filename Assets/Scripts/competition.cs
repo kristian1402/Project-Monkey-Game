@@ -20,6 +20,7 @@ public class competition : MonoBehaviour
     float stamina;
     float level;
     bool finished = false;
+    bool gameStarted = false;
     void Start()
     {
         saveData = GameObject.FindObjectOfType<SaveDataReader>();
@@ -41,11 +42,11 @@ public class competition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Time.timeSinceLevelLoad < 3)
+        if(Input.anyKey && gameStarted == false)
         {
-            countdown.text = "GET READY";
+            gameStarted = true;
         }
-        else
+        if (gameStarted == true)
         {
             if (timeRemaining > 0)
             {
