@@ -24,6 +24,9 @@ public class Boxing : MonoBehaviour
     GameObject defence;
     GameObject hitLeft;
     GameObject hitRight;
+    GameObject menuButton;
+    GameObject retryButton;
+    GameObject grayOut;
     int spriteIndex = 0;
     int health = 3;
     bool alive = true;
@@ -46,6 +49,13 @@ public class Boxing : MonoBehaviour
         hitLeft = GameObject.Find("Left");
         hitRight = GameObject.Find("Right");
         defence = GameObject.Find("Main");
+
+        menuButton = GameObject.Find("MenuButton");
+        retryButton = GameObject.Find("RetryButton");
+        grayOut = GameObject.Find("GrayOut");
+        grayOut.SetActive(false);
+        menuButton.SetActive(false);
+        retryButton.SetActive(false);
 
         //Exhausted.text = "";
         Score.text = score.ToString();
@@ -142,6 +152,9 @@ void MainLoop()
         {
             Exhausted.text = "Exhausted";
             alive = false;
+            grayOut.SetActive(true);
+            menuButton.SetActive(true);
+            retryButton.SetActive(true);
         }
     
     int pickbutton()
