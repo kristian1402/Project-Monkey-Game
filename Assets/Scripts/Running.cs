@@ -23,6 +23,9 @@ public class Running : MonoBehaviour
     int score = 5;
     GameObject spriteObject;
     GameObject harambae;
+    GameObject menuButton;
+    GameObject retryButton;
+    GameObject grayOut;
     float zRotation;
     bool gameStarted = false;
     bool coroutineStarted = false;
@@ -57,10 +60,17 @@ void Start()
     //rigidbody2D.gravityScale = 0;
 
     // Set the position of the game object
-    spriteObject.transform.position = new Vector3(10, -3, -1);
+    spriteObject.transform.position = new Vector3(10, -3, 0);
     values = saveData.getData();
     level = float.Parse(values[5]);
     Debug.Log(level);
+
+    menuButton = GameObject.Find("MenuButton");
+    retryButton = GameObject.Find("RetryButton");
+    grayOut = GameObject.Find("GrayOut");
+    grayOut.SetActive(false);
+    menuButton.SetActive(false);
+    retryButton.SetActive(false);
 }
 
 IEnumerator MoveText(GameObject spriteObject)
@@ -72,7 +82,7 @@ IEnumerator MoveText(GameObject spriteObject)
         
         // Move the sprite to the left
         Vector3 currentPosition = spriteObject.transform.position;
-        Vector3 newPosition = new Vector3(currentPosition.x - score * Time.deltaTime, currentPosition.y, -1);
+        Vector3 newPosition = new Vector3(currentPosition.x - score * Time.deltaTime, currentPosition.y, 0);
         
         // Check if the tag of the current game object is not the excluded tag
 
@@ -105,6 +115,9 @@ void Update()
                 if (lost == true)
                 {
                     lostText.text = "Exhausted";
+                    grayOut.SetActive(true);
+                    menuButton.SetActive(true);
+                    retryButton.SetActive(true);
                 }
             }
     }
