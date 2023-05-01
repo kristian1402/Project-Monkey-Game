@@ -29,13 +29,16 @@ public class Boxing : MonoBehaviour
     GameObject retryButton;
     GameObject grayOut;
     int spriteIndex = 0;
-    int health = 3;
+    int health = 4;
     bool alive = true;
     int score = 0;
     float level;
     bool gameStarted = false;
     bool first = true;
     GameObject textpanel;
+    GameObject Hp1;
+    GameObject Hp2;
+    GameObject Hp3;
     void Start()
     {
         saveData = GameObject.FindObjectOfType<SaveDataReader>();
@@ -57,6 +60,9 @@ public class Boxing : MonoBehaviour
         retryButton = GameObject.Find("RetryButton");
         grayOut = GameObject.Find("GrayOut");
         textpanel = GameObject.Find("BackdropText");
+        Hp1 = GameObject.Find("Hp1");
+        Hp2 = GameObject.Find("Hp2");
+        Hp3 = GameObject.Find("Hp3");
         grayOut.SetActive(false);
         menuButton.SetActive(false);
         retryButton.SetActive(false);
@@ -154,9 +160,18 @@ void MainLoop()
                 health--;
             }
         }
-        
+        if (health == 2)
+        {
+            GameObject.Destroy(Hp3);
+        }
+        if (health == 1)
+        {
+            GameObject.Destroy(Hp2);
+        }
+
         if (health < 1)
         {
+            GameObject.Destroy(Hp1);
             Exhausted.text = "Exhausted";
             alive = false;
             grayOut.SetActive(true);
