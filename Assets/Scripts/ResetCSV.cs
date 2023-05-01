@@ -11,6 +11,7 @@ public class ResetCSV : MonoBehaviour
     bool headerLine = true;
     void Start()
     {
+        File.Delete(Application.dataPath + "/Savefile/Savefile.csv");
         filename = Application.dataPath + "/Savefile/Savefile.csv";
         WriteCSV();
     }
