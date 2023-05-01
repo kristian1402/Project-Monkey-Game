@@ -15,6 +15,7 @@ public class Boxing : MonoBehaviour
     TMP_Text Letter;
     TMP_Text Exhausted;
     TMP_Text Score;
+    TMP_Text HowToPlay;
     string touchbutton;
     int index;
     public AudioSource audiosource;
@@ -34,6 +35,7 @@ public class Boxing : MonoBehaviour
     float level;
     bool gameStarted = false;
     bool first = true;
+    GameObject textpanel;
     void Start()
     {
         saveData = GameObject.FindObjectOfType<SaveDataReader>();
@@ -45,6 +47,7 @@ public class Boxing : MonoBehaviour
         Letter = GameObject.Find("Letter").GetComponent<TMP_Text>();
         Exhausted = GameObject.Find("Exhausted").GetComponent<TMP_Text>();
         Score = GameObject.Find("Score").GetComponent<TMP_Text>();
+        HowToPlay = GameObject.Find("HowToPlay").GetComponent<TMP_Text>();
 
         hitLeft = GameObject.Find("Left");
         hitRight = GameObject.Find("Right");
@@ -53,6 +56,7 @@ public class Boxing : MonoBehaviour
         menuButton = GameObject.Find("MenuButton");
         retryButton = GameObject.Find("RetryButton");
         grayOut = GameObject.Find("GrayOut");
+        textpanel = GameObject.Find("BackdropText");
         grayOut.SetActive(false);
         menuButton.SetActive(false);
         retryButton.SetActive(false);
@@ -96,12 +100,15 @@ void Update()
         if(gameStarted == false)
         {
             Letter.text = "";
+            HowToPlay.text ="Hit the korresponding button as the letter shown, dont let the letter fall into the red zone. You have 3 lives, if the letter falls into red, or a wrong button is hit, you loose a life";
             Exhausted.text = "Press any key to start";
         }
         if(Input.anyKey && gameStarted == false)
         {
             gameStarted = true;
             Exhausted.text = "";
+            GameObject.Destroy(textpanel);
+            HowToPlay.text = "";
         }
         if (gameStarted == true && alive == true)
         {
@@ -155,6 +162,7 @@ void MainLoop()
             grayOut.SetActive(true);
             menuButton.SetActive(true);
             retryButton.SetActive(true);
+
         }
     
     int pickbutton()
