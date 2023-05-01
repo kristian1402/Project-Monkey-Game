@@ -10,6 +10,7 @@ public class Weight : MonoBehaviour
     GameObject GreyOut;
     TMP_Text Exhausted;
     TMP_Text scoreText;
+    TMP_Text introText;
     GameObject grayOut;
     GameObject Up;
     GameObject Down;
@@ -18,7 +19,7 @@ public class Weight : MonoBehaviour
     GameObject Hp3;
     GameObject Hp4;
 
-    int health = 3;
+    int health = 4;
     bool alive = true;
     bool gameStarted = false;
     int score = 5;
@@ -26,13 +27,13 @@ public class Weight : MonoBehaviour
     bool movingLeft = true;
     bool movingRight = false;
     float divisionvalue = 2f;
-
     public Object MoneyFile;
     StreamReader reader;
     string CSVfilePath;
     string powerups;
     string healthincrease;
     string[] PrData;
+    bool started = true;
 
     IEnumerator MoveText()
     {
@@ -40,7 +41,7 @@ public class Weight : MonoBehaviour
         {
             divisionvalue = 4f;
         }
-        while (alive == true)
+        while (alive == true && started == true)
         {
 
             while (movingLeft == true)
@@ -77,11 +78,12 @@ public class Weight : MonoBehaviour
         Hp4 = GameObject.Find("Hp4");
         retrybutton.SetActive(false);
         menubutton.SetActive(false);
-        GreyOut.SetActive(false);
+        
         Hp4.SetActive(false);
 
         Arrow = GameObject.Find("Arrow").GetComponent<TMP_Text>();
         scoreText = GameObject.Find("Score").GetComponent<TMP_Text>();
+        introText = GameObject.Find("IntroText").GetComponent<TMP_Text>();
         
         Up = GameObject.Find("Up");
         Up.SetActive(false);
@@ -108,13 +110,17 @@ public class Weight : MonoBehaviour
             health++;
             Hp4.SetActive(true);
         }
-        StartCoroutine(MoveText());
-        
     }
 
     void Update()
     {
-        if (alive == true)
+        if(Input.anyKey && gameStarted == false){
+            gameStarted = true;
+            introText.text = "";
+            GreyOut.SetActive(false);
+            StartCoroutine(MoveText());
+        }
+        if (alive == true && started == true)
         {
             mainLoop();
         }
