@@ -6,40 +6,42 @@ using UnityEngine.UI;
 
 public class Running : MonoBehaviour
 {
-    SaveDataReader saveData;
-    public Sprite Run1;
-    public Sprite Run2;
-    public Sprite Run3;
-    string[] values;
-    public Sprite mySprite;
-    public GameObject exclusion;
-    public float moveSpeed = 5f;
-    public float jumpHeight = 100f;
-    bool onfloor = true;
-    float increasedGravityScale = 4f;
-    float normalGravityScale = 1f;
-    TMP_Text running;
-    TMP_Text lostText;
-    int score = 5;
-    GameObject spriteObject;
-    GameObject harambae;
-    GameObject menuButton;
-    GameObject retryButton;
-    GameObject grayOut;
-    float zRotation;
-    bool gameStarted = false;
-    bool coroutineStarted = false;
-    bool lost = false;
-    float level;
+SaveDataReader saveData;
+public Sprite Run1;
+public Sprite Run2;
+public Sprite Run3;
+string[] values;
+public Sprite mySprite;
+public GameObject exclusion;
+public float moveSpeed = 5f;
+public float jumpHeight = 100f;
+bool onfloor = true;
+float increasedGravityScale = 4f;
+float normalGravityScale = 1f;
+TMP_Text running;
+TMP_Text howToPlay;
+TMP_Text lostText;
+int score = 5;
+GameObject spriteObject;
+GameObject harambae;
+GameObject menuButton;
+GameObject retryButton;
+GameObject grayOut;
+float zRotation;
+bool gameStarted = false;
+bool coroutineStarted = false;
+bool lost = false;
+float level;
 
 void Start()
 {
     saveData = GameObject.FindObjectOfType<SaveDataReader>();
     running = GameObject.Find("running").GetComponent<TMP_Text>();
     lostText = GameObject.Find("lost").GetComponent<TMP_Text>();
+    howToPlay = GameObject.Find("HowToPlay").GetComponent<TMP_Text>();
 
     harambae = GameObject.Find("HaramBae");
-
+    
 
     // Create a new game object
     spriteObject = new GameObject("Sprite Object");
@@ -77,9 +79,9 @@ IEnumerator MoveText(GameObject spriteObject)
 {
     while (lost == false)
     {
-        
+        howToPlay.text = " ";
         string excludedTag = exclusion.tag;
-        
+
         // Move the sprite to the left
         Vector3 currentPosition = spriteObject.transform.position;
         Vector3 newPosition = new Vector3(currentPosition.x - score * Time.deltaTime, currentPosition.y, 0);
@@ -87,14 +89,19 @@ IEnumerator MoveText(GameObject spriteObject)
         // Check if the tag of the current game object is not the excluded tag
 
             // Update the position of the sprite
-        spriteObject.transform.position = newPosition;
+            spriteObject.transform.position = newPosition;
         
 
         // Wait for the next frame
         yield return null;
     }
+    if (lost == true)
+    {
+        GameObject.Destroy(spriteObject);
+    }
 }
 void Update()
+    
     {
         if(Input.anyKey && gameStarted == false)
         {
@@ -108,17 +115,17 @@ void Update()
                     StartCoroutine(ChangeImage());
                     coroutineStarted = true;
                 }
-                if (lost == false)
-                {
-                    mainrunner();
-                }
-                if (lost == true)
-                {
-                    lostText.text = "Exhausted";
+    if (lost == false)
+    {
+        mainrunner();
+    }
+    if (lost == true)
+    {
+        lostText.text = "Exhausted";
                     grayOut.SetActive(true);
                     menuButton.SetActive(true);
                     retryButton.SetActive(true);
-                }
+    }
             }
     }
 void mainrunner(){

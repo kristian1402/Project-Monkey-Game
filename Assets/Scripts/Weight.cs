@@ -8,9 +8,14 @@ public class Weight : MonoBehaviour
     string[] values;
     public TMP_Text repCount;
     GameObject winText;
+    GameObject exhausted;
     GameObject repUp;
     GameObject repDown;
     Slider mainSlider;
+
+    GameObject grayOut;
+    GameObject menuButton;
+    GameObject retryButton;
     float fillTime;
     float PushStrength;
     float fallTime;
@@ -27,9 +32,18 @@ public class Weight : MonoBehaviour
         saveData = GameObject.FindObjectOfType<SaveDataReader>();
         mainSlider = GameObject.FindObjectOfType<Slider>();
         winText = GameObject.FindGameObjectWithTag("Finish");
+        exhausted = GameObject.Find("Exhausted");
         repUp = GameObject.Find("HaramBaeMiliUp");
         repDown = GameObject.Find("HaramBaeMiliDown");
 
+        menuButton = GameObject.Find("MenuButton");
+        retryButton = GameObject.Find("RetryButton");
+        grayOut = GameObject.Find("GrayOut");
+        grayOut.SetActive(false);
+        menuButton.SetActive(false);
+        retryButton.SetActive(false);
+
+        exhausted.SetActive(false);
         winText.SetActive(false);
         repDown.SetActive(true);
         repUp.SetActive(false);
@@ -81,7 +95,11 @@ public class Weight : MonoBehaviour
         }
         if (reps > 19)
         {
+            exhausted.SetActive(true);
             winText.SetActive(true);
+            grayOut.SetActive(true);
+            menuButton.SetActive(true);
+            retryButton.SetActive(true);
         }
     }
 
