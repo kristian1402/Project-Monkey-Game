@@ -90,7 +90,7 @@ public class Weight : MonoBehaviour
 
 
 
-        CSVfilePath = Application.dataPath + "/Savefile/moneyFile.csv";
+        CSVfilePath = Application.dataPath + "/Resources/Savefile/moneyFile.csv";
         CSVfilePath.Replace("\\", "/");
         
         reader = new StreamReader(CSVfilePath);

@@ -11,8 +11,18 @@ public class SaveDataReader : MonoBehaviour
     string[] PrData;
     void Start()
     {
-        string CSVfilePath = Application.dataPath + "/Savefile/Savefile.csv";
+        string CSVfilePath = Application.dataPath + "/Resources/Savefile/Savefile.csv";
         CSVfilePath.Replace("\\", "/");
+
+        if (!File.Exists(CSVfilePath))
+        {
+            File.CreateText(CSVfilePath).Close();
+            writer = new StreamWriter(CSVfilePath);
+            writer.WriteLine("creatine, protein, steroids, Strength, Stamina, Level");
+            writer.WriteLine("false;false;false;1;1;1");
+            writer.Close();
+        }
+
         filePath = CSVfilePath; 
         reader = new StreamReader(CSVfilePath); 
 

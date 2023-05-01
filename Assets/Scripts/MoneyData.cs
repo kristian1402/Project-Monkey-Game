@@ -24,8 +24,9 @@ public class MoneyData : MonoBehaviour
     void Start()
     {
         //GameObject canvas = GameObject.Find("Text (TMP)_InsufficientCost");
-        CSVfilePath = Application.dataPath + "/Savefile/moneyFile.csv";
+        CSVfilePath = Application.dataPath + "/Resources/Savefile/moneyFile.csv";
         CSVfilePath.Replace("\\", "/");
+
         DeactivateCanvas(InsufficiantFunds);
     }
 
