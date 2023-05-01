@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class Running : MonoBehaviour
 {
 SaveDataReader saveData;
+public AudioSource audiosource;
 public Sprite Run1;
 public Sprite Run2;
 public Sprite Run3;
@@ -211,6 +212,7 @@ void mainrunner(){
     {
         Vector3 jumpVector = new Vector3(0, jumpHeight, 0);
         exclusion.GetComponent<Rigidbody2D>().velocity = jumpVector;
+        audiosource.Play();
         onfloor = false;
     }
 
