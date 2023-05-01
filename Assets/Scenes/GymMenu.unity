@@ -181,8 +181,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Play different minigames to increase your stamina, agility and strength.
+  m_text: 'Play different minigames to increase your stamina, agility and strength.
     these stats will help you in beating the fierce oppnonent "Mike the mandrill"
+
+
+    For
+    the game game to scale correctly you have to play at 1920x1080p fullscreen'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8af2097fea6b08f4fb7a83259b55e666, type: 2}
   m_sharedMaterial: {fileID: 1224017336830788974, guid: 8af2097fea6b08f4fb7a83259b55e666, type: 2}
@@ -513,8 +517,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1583.61, y: -280.38}
-  m_SizeDelta: {x: 595.95, y: 320.45}
+  m_AnchoredPosition: {x: 1583.61, y: -364.14}
+  m_SizeDelta: {x: 595.95, y: 487.96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &645667591
 MonoBehaviour:
