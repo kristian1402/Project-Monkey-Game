@@ -249,9 +249,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 57350347}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 769dfea28eae557428311b0f5a109232, type: 3}
+  m_Script: {fileID: 11500000, guid: 56541fb568ad64e45bd2cf7264a28a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MoneyFile: {fileID: 4900000, guid: 8834fbdfc52fc874caf546eb0b2400ef, type: 3}
+  supplementCost: 110
+  InsufficiantFunds: {fileID: 1458827423}
 --- !u!114 &57350350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,8 +300,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 57350349}
-        m_TargetAssemblyTypeName: MainApeData, Assembly-CSharp
-        m_MethodName: SetSteroidsTrue
+        m_TargetAssemblyTypeName: MoneyData, Assembly-CSharp
+        m_MethodName: BuySkin3
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2500,9 +2503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoneyFile: {fileID: 4900000, guid: 8834fbdfc52fc874caf546eb0b2400ef, type: 3}
-  creatineCost: 100
-  proteineCost: 100
-  steroidCost: 100
+  supplementCost: 101
   InsufficiantFunds: {fileID: 1458827423}
 --- !u!1 &560414113
 GameObject:
@@ -2558,9 +2559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoneyFile: {fileID: 4900000, guid: 8834fbdfc52fc874caf546eb0b2400ef, type: 3}
-  creatineCost: 100
-  proteineCost: 0
-  steroidCost: 0
+  supplementCost: 108
   InsufficiantFunds: {fileID: 1458827423}
 --- !u!114 &560414116
 MonoBehaviour:
@@ -2607,8 +2606,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 560414115}
-        m_TargetAssemblyTypeName: MainApeData, Assembly-CSharp
-        m_MethodName: SetCreatineTrue
+        m_TargetAssemblyTypeName: MoneyData, Assembly-CSharp
+        m_MethodName: BuySkin1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3248,9 +3247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoneyFile: {fileID: 4900000, guid: 8834fbdfc52fc874caf546eb0b2400ef, type: 3}
-  creatineCost: 100
-  proteineCost: 100
-  steroidCost: 100
+  supplementCost: 100
   InsufficiantFunds: {fileID: 1458827423}
 --- !u!1 &749220057
 GameObject:
@@ -5662,9 +5659,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1203946661}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 769dfea28eae557428311b0f5a109232, type: 3}
+  m_Script: {fileID: 11500000, guid: 56541fb568ad64e45bd2cf7264a28a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MoneyFile: {fileID: 4900000, guid: 8834fbdfc52fc874caf546eb0b2400ef, type: 3}
+  supplementCost: 106
+  InsufficiantFunds: {fileID: 1458827423}
 --- !u!114 &1203946664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5710,8 +5710,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1203946663}
-        m_TargetAssemblyTypeName: MainApeData, Assembly-CSharp
-        m_MethodName: SetProteineTrue
+        m_TargetAssemblyTypeName: MoneyData, Assembly-CSharp
+        m_MethodName: BuyPowerUp2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6733,9 +6733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoneyFile: {fileID: 4900000, guid: 8834fbdfc52fc874caf546eb0b2400ef, type: 3}
-  creatineCost: 100
-  proteineCost: 100
-  steroidCost: 100
+  supplementCost: 103
   InsufficiantFunds: {fileID: 1458827423}
 --- !u!1 &1458827423
 GameObject:
@@ -6922,9 +6920,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1473276045}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 769dfea28eae557428311b0f5a109232, type: 3}
+  m_Script: {fileID: 11500000, guid: 56541fb568ad64e45bd2cf7264a28a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MoneyFile: {fileID: 4900000, guid: 8834fbdfc52fc874caf546eb0b2400ef, type: 3}
+  supplementCost: 109
+  InsufficiantFunds: {fileID: 1458827423}
 --- !u!114 &1473276048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6970,8 +6971,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1473276047}
-        m_TargetAssemblyTypeName: MainApeData, Assembly-CSharp
-        m_MethodName: SetProteineTrue
+        m_TargetAssemblyTypeName: MoneyData, Assembly-CSharp
+        m_MethodName: BuySkin2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7186,9 +7187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoneyFile: {fileID: 4900000, guid: 8834fbdfc52fc874caf546eb0b2400ef, type: 3}
-  creatineCost: 0
-  proteineCost: 0
-  steroidCost: 0
+  supplementCost: 0
   InsufficiantFunds: {fileID: 1458827423}
 --- !u!114 &1525616350
 MonoBehaviour:
@@ -7273,7 +7272,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 1.3059363}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -8276,9 +8275,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1700562885}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 769dfea28eae557428311b0f5a109232, type: 3}
+  m_Script: {fileID: 11500000, guid: 56541fb568ad64e45bd2cf7264a28a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MoneyFile: {fileID: 4900000, guid: 8834fbdfc52fc874caf546eb0b2400ef, type: 3}
+  supplementCost: 107
+  InsufficiantFunds: {fileID: 1458827423}
 --- !u!114 &1700562888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8324,8 +8326,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1700562887}
-        m_TargetAssemblyTypeName: MainApeData, Assembly-CSharp
-        m_MethodName: SetSteroidsTrue
+        m_TargetAssemblyTypeName: MoneyData, Assembly-CSharp
+        m_MethodName: BuyPowerUp3
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9638,9 +9640,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoneyFile: {fileID: 4900000, guid: 8834fbdfc52fc874caf546eb0b2400ef, type: 3}
-  creatineCost: 100
-  proteineCost: 100
-  steroidCost: 100
+  supplementCost: 104
   InsufficiantFunds: {fileID: 1458827423}
 --- !u!114 &1943902502
 MonoBehaviour:
@@ -9688,7 +9688,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1943902501}
         m_TargetAssemblyTypeName: MoneyData, Assembly-CSharp
-        m_MethodName: BuyCreatine
+        m_MethodName: BuyPowerUp1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
