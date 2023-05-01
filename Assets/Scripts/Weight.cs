@@ -1,110 +1,101 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class Weight : MonoBehaviour
 {
-    SaveDataReader saveData;
-    string[] values;
-    public TMP_Text repCount;
-    GameObject winText;
-    GameObject exhausted;
-    GameObject repUp;
-    GameObject repDown;
-    Slider mainSlider;
-
+    GameObject menubutton;
+    GameObject retrybutton;
+    GameObject GreyOut;
+    TMP_Text Exhausted;
+    TMP_Text scoreText;
     GameObject grayOut;
-    GameObject menuButton;
-    GameObject retryButton;
-    float fillTime;
-    float PushStrength;
-    float fallTime;
-    float stamina;
-    int reps;
-    public float strength;
-    public float maxValue;
-    public float FallTime;
-    bool pointAdded = false;
-    bool fillTimeSet = false;
+    int health = 3;
+    bool alive = true;
+    bool gameStarted = false;
+    int score = 5;
+    TMP_Text Arrow;
+    bool movingLeft = true;
+    bool movingRight = false;
+    float divisionvalue = 2f;
 
+    IEnumerator MoveText()
+    {
+        while (alive == true)
+        {
+            while (movingLeft == true)
+            {
+                Arrow.rectTransform.position -= new Vector3((1+(score/divisionvalue)) * Time.deltaTime, 0, 0);
+                if (Arrow.rectTransform.position.x < (-5))
+                {
+                    movingLeft = false;
+                    movingRight = true;
+                }
+                yield return null;
+            }
+            while (movingRight == true)
+            {
+                Arrow.rectTransform.position += new Vector3((1+(score/divisionvalue)) * Time.deltaTime, 0, 0);
+                if (Arrow.rectTransform.position.x > (5))
+                {
+                    movingLeft = true;
+                    movingRight = false;
+                }
+                yield return null;
+            }
+        }
+    }
     void Start()
     {
-        saveData = GameObject.FindObjectOfType<SaveDataReader>();
-        mainSlider = GameObject.FindObjectOfType<Slider>();
-        winText = GameObject.FindGameObjectWithTag("Finish");
-        exhausted = GameObject.Find("Exhausted");
-        repUp = GameObject.Find("HaramBaeMiliUp");
-        repDown = GameObject.Find("HaramBaeMiliDown");
+        //Find and disable buttons 
+        menubutton = GameObject.Find("MenuButton");
+        retrybutton = GameObject.Find("RetryButton");
+        GreyOut = GameObject.Find("GrayOut");
+        retrybutton.SetActive(false);
+        menubutton.SetActive(false);
+        GreyOut.SetActive(false);
 
-        menuButton = GameObject.Find("MenuButton");
-        retryButton = GameObject.Find("RetryButton");
-        grayOut = GameObject.Find("GrayOut");
-        grayOut.SetActive(false);
-        menuButton.SetActive(false);
-        retryButton.SetActive(false);
-
-        exhausted.SetActive(false);
-        winText.SetActive(false);
-        repDown.SetActive(true);
-        repUp.SetActive(false);
-
-        values = saveData.getData();
-
-        PushStrength = float.Parse(values[3]);
-        fallTime = float.Parse(values[4]);
-        stamina = float.Parse(values[5]);
+        Arrow = GameObject.Find("Arrow").GetComponent<TMP_Text>();
+        scoreText = GameObject.Find("Score").GetComponent<TMP_Text>();
+        StartCoroutine(MoveText());
+        
     }
 
     void Update()
     {
-        Gameplay(strength, maxValue, fallTime);
-        fillTimeSet = true;
-    }
-
-    public void Gameplay(float Strength, float MaxVal, float fallTime)
-    {
-        if (!fillTimeSet)
+        if (alive == true)
         {
-            fillTime += fallTime * Time.deltaTime;   
+            mainLoop();
         }
-        repCount.text = reps.ToString();
-        mainSlider.value = Mathf.SmoothStep(mainSlider.value, 0, fillTime);
-        if (reps < 20)
+    }
+    void mainLoop(){
+        if(Input.GetKeyDown(KeyCode.Space))
         {
-            if (Input.GetKeyUp("space"))
+            if (Arrow.rectTransform.position.x < 0.5f && Arrow.rectTransform.position.x > -0.5f)
             {
-                mainSlider.value += Strength;
-            }  
-
-            if (mainSlider.value >= MaxVal)
-            {
-                repDown.SetActive(false);
-                repUp.SetActive(true);
-                if (!pointAdded)
-                {
-                    reps++;
-                    pointAdded= true;
+                score++;  
+                scoreText.text = (score-5).ToString();
+                if (movingLeft == true)
+                {   
+                    Arrow.rectTransform.position += new Vector3(-5, 0, 0);
+                }
+                if (movingRight == true)
+                {   
+                    Arrow.rectTransform.position += new Vector3(5, 0, 0);
                 }
             }
             else
             {
-                pointAdded = false;
-                repDown.SetActive(true);
-                repUp.SetActive(false);
+                health--;
+            }
+            if (health < 1)
+            {
+                alive = false;
+                retrybutton.SetActive(true);
+                menubutton.SetActive(true);
+                GreyOut.SetActive(true);
             }
         }
-        if (reps > 19)
-        {
-            exhausted.SetActive(true);
-            winText.SetActive(true);
-            grayOut.SetActive(true);
-            menuButton.SetActive(true);
-            retryButton.SetActive(true);
-        }
-    }
-
-    void EndState()
-    {
-        //Add gained values to monkey
     }
 }
