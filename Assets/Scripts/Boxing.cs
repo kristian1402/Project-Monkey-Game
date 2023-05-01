@@ -212,7 +212,9 @@ void MainLoop()
             grayOut.SetActive(true);
             menuButton.SetActive(true);
             retryButton.SetActive(true);
-
+            string[] stats = saveData.getData();
+            float addition = float.Parse(stats[5])+((score-5)/20);
+            saveData.updateSaveData(false,false,false,int.Parse(stats[3]),int.Parse(stats[4]),addition);
         }
     
     int pickbutton()

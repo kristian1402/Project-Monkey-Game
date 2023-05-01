@@ -139,10 +139,13 @@ void Update()
     }
     if (lost == true)
     {
-        lostText.text = "Exhausted";
+        lostText.text = "GAME OVER";
                     grayOut.SetActive(true);
                     menuButton.SetActive(true);
                     retryButton.SetActive(true);
+                    string[] stats = saveData.getData();
+                    float addition = float.Parse(stats[4])+((score-5)/20);
+                    saveData.updateSaveData(false,false,false,int.Parse(stats[3]),addition,int.Parse(stats[5]));
     }
             }
     }

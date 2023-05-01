@@ -5,6 +5,7 @@ using System.IO;
 
 public class Weight : MonoBehaviour
 {
+    SaveDataReader saveData;
     GameObject menubutton;
     GameObject retrybutton;
     GameObject GreyOut;
@@ -68,6 +69,7 @@ public class Weight : MonoBehaviour
     }
     void Start()
     {
+        saveData = GameObject.FindObjectOfType<SaveDataReader>();
         //Find and disable buttons 
         menubutton = GameObject.Find("MenuButton");
         retrybutton = GameObject.Find("RetryButton");
@@ -179,6 +181,9 @@ public class Weight : MonoBehaviour
                 menubutton.SetActive(true);
                 GreyOut.SetActive(true);
                 GameObject.Destroy(Hp1);
+                string[] stats = saveData.getData();
+                float addition = float.Parse(stats[3])+((score-5)/20);
+                saveData.updateSaveData(false,false,false,addition,int.Parse(stats[4]),int.Parse(stats[5]));
             }
         }
     }
