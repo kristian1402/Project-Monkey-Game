@@ -212,8 +212,8 @@ void mainrunner(){
     {
         Vector3 jumpVector = new Vector3(0, jumpHeight, 0);
         exclusion.GetComponent<Rigidbody2D>().velocity = jumpVector;
-        audiosource.Play();
         onfloor = false;
+        audiosource.Play();
     }
 
 }
