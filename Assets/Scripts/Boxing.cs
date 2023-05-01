@@ -100,7 +100,7 @@ void Update()
         if(gameStarted == false)
         {
             Letter.text = "";
-            HowToPlay.text ="Hit the korresponding button as the letter shown, dont let the letter fall into the red zone. You have 3 lives, if the letter falls into red, or a wrong button is hit, you loose a life";
+            HowToPlay.text ="Hit the corresponding button as the letter shown.";
             Exhausted.text = "Press any key to start";
         }
         if(Input.anyKey && gameStarted == false)
