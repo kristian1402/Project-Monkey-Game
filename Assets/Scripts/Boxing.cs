@@ -1,7 +1,8 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
+using UnityEditor;
 using System.Collections;
+using System.IO;
 
 
 public class Boxing : MonoBehaviour
@@ -39,6 +40,13 @@ public class Boxing : MonoBehaviour
     GameObject Hp1;
     GameObject Hp2;
     GameObject Hp3;
+    GameObject Hp4;
+    public Object MoneyFile;
+    StreamReader reader;
+    string CSVfilePath;
+    string powerups;
+    string healthincrease;
+    string[] PrData;
     void Start()
     {
         saveData = GameObject.FindObjectOfType<SaveDataReader>();
@@ -63,6 +71,8 @@ public class Boxing : MonoBehaviour
         Hp1 = GameObject.Find("Hp1");
         Hp2 = GameObject.Find("Hp2");
         Hp3 = GameObject.Find("Hp3");
+        Hp4 = GameObject.Find("Hp4");
+        Hp4.SetActive(false);
         grayOut.SetActive(false);
         menuButton.SetActive(false);
         retryButton.SetActive(false);
@@ -76,9 +86,25 @@ public class Boxing : MonoBehaviour
 
         values = saveData.getData();
         level = float.Parse(values[5]);
-        Debug.Log(level);
-        
 
+        CSVfilePath = AssetDatabase.GetAssetPath(MoneyFile);
+        CSVfilePath.Replace("\\", "/");
+        
+        reader = new StreamReader(CSVfilePath);
+        string RawData = reader.ReadLine();
+
+        for (int i = 0; i < RawData.Length; i++) { 
+                PrData = RawData.Split(";");
+            }
+        reader.Close();
+        powerups = PrData[0];
+        healthincrease = PrData[1];
+
+        if (healthincrease == "true")
+        {
+            health++;
+            Hp4.SetActive(true);
+        }
     }
 
     // Update is called once per frame
@@ -87,8 +113,14 @@ IEnumerator MoveText()
     while (alive == true && gameStarted == true)
     {
             // Move the text 200 pixels to the left each second
-            
-        Letter.rectTransform.position -= new Vector3((1+(score/(3+level))) * Time.deltaTime, 0, 0);
+        if (powerups == "true")
+        {
+            Letter.rectTransform.position -= new Vector3((1+(score/(6))) * Time.deltaTime, 0, 0);
+        }
+        else
+        {
+        Letter.rectTransform.position -= new Vector3((1+(score/(3))) * Time.deltaTime, 0, 0);
+        }
             
         if (Letter.rectTransform.position.x < (-5))
         {
@@ -160,9 +192,13 @@ void MainLoop()
                 health--;
             }
         }
+        if (health == 3)
+        {
+            GameObject.Destroy(Hp4);
+        }
         if (health == 2)
         {
-            GameObject.Destroy(Hp3);
+            GameObject.Destroy(Hp1);
         }
         if (health == 1)
         {
@@ -171,7 +207,7 @@ void MainLoop()
 
         if (health < 1)
         {
-            GameObject.Destroy(Hp1);
+            GameObject.Destroy(Hp3);
             Exhausted.text = "Exhausted";
             alive = false;
             grayOut.SetActive(true);

@@ -1,6 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
+using UnityEditor;
 using TMPro;
 using UnityEngine.UI;
 
@@ -13,6 +14,7 @@ public Sprite Run3;
 string[] values;
 public Sprite mySprite;
 public GameObject exclusion;
+public Object MoneyFile;
 public float moveSpeed = 5f;
 public float jumpHeight = 100f;
 bool onfloor = true;
@@ -21,6 +23,9 @@ float normalGravityScale = 1f;
 TMP_Text running;
 TMP_Text howToPlay;
 TMP_Text lostText;
+StreamReader reader;
+string CSVfilePath;
+string[] PrData;
 int score = 5;
 GameObject spriteObject;
 GameObject harambae;
@@ -31,6 +36,7 @@ float zRotation;
 bool gameStarted = false;
 bool coroutineStarted = false;
 bool lost = false;
+string powerups;
 float level;
 
 void Start()
@@ -73,6 +79,18 @@ void Start()
     grayOut.SetActive(false);
     menuButton.SetActive(false);
     retryButton.SetActive(false);
+
+    CSVfilePath = AssetDatabase.GetAssetPath(MoneyFile);
+    CSVfilePath.Replace("\\", "/");
+
+    reader = new StreamReader(CSVfilePath);
+    string RawData = reader.ReadLine();
+
+    for (int i = 0; i < RawData.Length; i++) { 
+            PrData = RawData.Split(";");
+        }
+    reader.Close();
+    string powerups = PrData[0];
 }
 
 IEnumerator MoveText(GameObject spriteObject)
@@ -133,7 +151,7 @@ void mainrunner(){
     Vector3 dodgepostition = spriteObject.transform.position;   
     if (zRotation <= 300 && zRotation >= 60)
     {
-        lost = true;
+        lost = true;   
     }
 
     if (lost == false)

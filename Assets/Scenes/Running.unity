@@ -1760,6 +1760,7 @@ MonoBehaviour:
   Run3: {fileID: 21300000, guid: c58e2e44cba85294192a82303bc1bf44, type: 3}
   mySprite: {fileID: 21300000, guid: e7e003b99b617bf44b1edebded142843, type: 3}
   exclusion: {fileID: 364009237}
+  MoneyFile: {fileID: 4900000, guid: 8834fbdfc52fc874caf546eb0b2400ef, type: 3}
   moveSpeed: 5
   jumpHeight: 5
 --- !u!114 &1635277984
