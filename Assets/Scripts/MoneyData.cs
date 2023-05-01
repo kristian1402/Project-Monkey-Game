@@ -88,7 +88,10 @@ public class MoneyData : MonoBehaviour
         if (getMoney() >= cost)
         {
             updateMoney(-cost);
-            creatine = true;
+            int currentMoney = getMoney();
+            writer = new StreamWriter(CSVfilePath);
+            writer.WriteLine("true;false;false;" + currentMoney);
+            writer.Close();
         }
         else if (getMoney() < cost ) {
             InsufficiantCanvasSwitcher();
@@ -102,7 +105,10 @@ public class MoneyData : MonoBehaviour
         if (getMoney() >= cost)
         {
             updateMoney(-cost);
-            proteine = true;
+                int currentMoney = getMoney();
+                writer = new StreamWriter(CSVfilePath);
+                writer.WriteLine("false;true;false;" + currentMoney);
+                writer.Close();
         }
         else if (getMoney() < cost ) {
             InsufficiantCanvasSwitcher();
@@ -116,7 +122,10 @@ public class MoneyData : MonoBehaviour
         if (getMoney() >= cost)
         {
             updateMoney(-cost);
-            steroids = true;
+                int currentMoney = getMoney();
+                writer = new StreamWriter(CSVfilePath);
+                writer.WriteLine("false;false;true;" + currentMoney);
+                writer.Close();
         }
         else if (getMoney() < cost ) {
             InsufficiantCanvasSwitcher();
