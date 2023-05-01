@@ -1,6 +1,5 @@
 using UnityEngine;
 using TMPro;
-using UnityEditor;
 using System.Collections;
 using System.IO;
 

@@ -1,9 +1,7 @@
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 using System.IO;
-using UnityEditor;
 
 public class Weight : MonoBehaviour
 {
