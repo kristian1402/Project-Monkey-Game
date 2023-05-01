@@ -1402,7 +1402,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Mike the Mandril
 
-    High score: 9700'
+    High score: 14000'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8af2097fea6b08f4fb7a83259b55e666, type: 2}
   m_sharedMaterial: {fileID: 1224017336830788974, guid: 8af2097fea6b08f4fb7a83259b55e666, type: 2}

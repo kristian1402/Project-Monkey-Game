@@ -86,7 +86,7 @@ public class competition : MonoBehaviour
         int score = Mathf.RoundToInt(scorefloat);
         countdown.text = "FINAL SCORE = " + score.ToString();
 
-        if (score > 9700)
+        if (score > 14000)
         {
             scoreText.text = "YOU WIN";
             moneyData.updateMoney(5);
