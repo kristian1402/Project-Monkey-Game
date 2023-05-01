@@ -19,6 +19,7 @@ bool onfloor = true;
 float increasedGravityScale = 4f;
 float normalGravityScale = 1f;
 TMP_Text running;
+TMP_Text howToPlay;
 TMP_Text lostText;
 int score = 5;
 GameObject spriteObject;
@@ -37,6 +38,7 @@ void Start()
     saveData = GameObject.FindObjectOfType<SaveDataReader>();
     running = GameObject.Find("running").GetComponent<TMP_Text>();
     lostText = GameObject.Find("lost").GetComponent<TMP_Text>();
+    howToPlay = GameObject.Find("HowToPlay").GetComponent<TMP_Text>();
 
     harambae = GameObject.Find("HaramBae");
     
@@ -77,7 +79,7 @@ IEnumerator MoveText(GameObject spriteObject)
 {
     while (lost == false)
     {
-        
+        howToPlay.text = " ";
         string excludedTag = exclusion.tag;
 
         // Move the sprite to the left
