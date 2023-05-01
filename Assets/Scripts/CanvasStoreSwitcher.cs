@@ -8,6 +8,11 @@ public class CanvasStoreSwitcher : MonoBehaviour
     public GameObject powerUpCanvas;
     public GameObject skinCanvas;
 
+    void Start() {
+        DeactivateCanvas(powerUpCanvas);
+        DeactivateCanvas(skinCanvas);
+    }
+
     void ActivateCanvas(GameObject canvas)
     {
         canvas.SetActive(true);
