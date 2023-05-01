@@ -81,7 +81,7 @@ void Start()
     menuButton.SetActive(false);
     retryButton.SetActive(false);
 
-    CSVfilePath = AssetDatabase.GetAssetPath(MoneyFile);
+    CSVfilePath = Application.dataPath + "/Savefile/moneyFile.csv";
     CSVfilePath.Replace("\\", "/");
 
     reader = new StreamReader(CSVfilePath);

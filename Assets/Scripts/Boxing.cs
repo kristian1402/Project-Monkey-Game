@@ -87,7 +87,7 @@ public class Boxing : MonoBehaviour
         values = saveData.getData();
         level = float.Parse(values[5]);
 
-        CSVfilePath = AssetDatabase.GetAssetPath(MoneyFile);
+        CSVfilePath = Application.dataPath + "/Savefile/moneyFile.csv";
         CSVfilePath.Replace("\\", "/");
         
         reader = new StreamReader(CSVfilePath);

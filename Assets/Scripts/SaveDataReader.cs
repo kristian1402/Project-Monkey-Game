@@ -12,7 +12,7 @@ public class SaveDataReader : MonoBehaviour
     string[] PrData;
     void Start()
     {
-        string CSVfilePath = AssetDatabase.GetAssetPath(SaveFile);
+        string CSVfilePath = Application.dataPath + "/Savefile/Savefile.csv";
         CSVfilePath.Replace("\\", "/");
         filePath = CSVfilePath; 
         reader = new StreamReader(CSVfilePath); 
