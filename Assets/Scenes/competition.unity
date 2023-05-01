@@ -333,7 +333,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d4a93f3787071a945a7a10bb32ad06d9, type: 3}
+  m_audioClip: {fileID: 8300000, guid: bef5d14c2ef124f438cebeda333c966a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -2204,6 +2204,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoneyFile: {fileID: 4900000, guid: 8834fbdfc52fc874caf546eb0b2400ef, type: 3}
+  supplementCost: 0
+  InsufficiantFunds: {fileID: 0}
 --- !u!1 &2123589921
 GameObject:
   m_ObjectHideFlags: 0
