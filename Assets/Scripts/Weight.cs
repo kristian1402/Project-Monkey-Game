@@ -11,6 +11,10 @@ public class Weight : MonoBehaviour
     GameObject repUp;
     GameObject repDown;
     Slider mainSlider;
+
+    GameObject grayOut;
+    GameObject menuButton;
+    GameObject retryButton;
     float fillTime;
     float PushStrength;
     float fallTime;
@@ -29,6 +33,13 @@ public class Weight : MonoBehaviour
         winText = GameObject.FindGameObjectWithTag("Finish");
         repUp = GameObject.Find("HaramBaeMiliUp");
         repDown = GameObject.Find("HaramBaeMiliDown");
+
+        menuButton = GameObject.Find("MenuButton");
+        retryButton = GameObject.Find("RetryButton");
+        grayOut = GameObject.Find("GrayOut");
+        grayOut.SetActive(false);
+        menuButton.SetActive(false);
+        retryButton.SetActive(false);
 
         winText.SetActive(false);
         repDown.SetActive(true);
@@ -82,6 +93,9 @@ public class Weight : MonoBehaviour
         if (reps > 19)
         {
             winText.SetActive(true);
+            grayOut.SetActive(true);
+            menuButton.SetActive(true);
+            retryButton.SetActive(true);
         }
     }
 
